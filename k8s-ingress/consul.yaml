@@ -28,3 +28,9 @@ ui:
 # Configures and installs the automatic Consul Connect sidecar injector.
 connectInject:
  enabled: true
+ingressGateways:
+  enabled: true
+  gateways:
+    - name: ingress-gateway
+      service:
+        type: ClusterIP
