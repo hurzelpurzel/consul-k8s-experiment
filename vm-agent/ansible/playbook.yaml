@@ -1,0 +1,14 @@
+- name: Install  Consul
+  hosts: debian12
+  become: true
+  become_user: ludger
+  tasks:
+   - name: Ping my hosts
+     ansible.builtin.ping:
+   - name: Print message
+     ansible.builtin.debug:
+       msg: Hello world
+   - name: Update repositories cache and install "consul" package
+     apt:
+       name: consul
+       update_cache: yes
