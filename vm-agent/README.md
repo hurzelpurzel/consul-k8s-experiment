@@ -27,6 +27,6 @@ https://github.com/ansible-community/ansible-consul
 
 
 ## consul
-wget -O- <https://apt.releases.hashicorp.com/gpg> | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
-echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] <https://apt.releases.hashicorp.com> $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
-sudo apt update && sudo apt install consul
+
+https://medium.com/@wenhuanglin/tutorial-on-running-nomad-and-consul-as-a-systemd-daemon-service-part-2-d1b999c73bdd
+<https://github.com/hashicorp-education/learn-consul-get-started-vms/tree/main/self-managed/infrastructure/local/scripts>

@@ -23,3 +23,27 @@
      apt:
        name: consul
        update_cache: yes
+   - name: Create Config Folder
+     file: 
+      path: /opt/consul/config
+      owner: consul
+      mode: 0777
+      state: directory
+   - name: Create Data Folder
+     file: 
+      path: /opt/consul/data
+      owner: consul
+      mode: 0777
+      state: directory
+   - name: Template config
+     ansible.builtin.template:
+        src: templates/agent-client.hcl.j2
+        dest: /opt/consul/config/agent-client.hcl
+        owner: consul
+        mode: '0777'
+   - name: Template start
+     ansible.builtin.template:
+        src: templates/start-consul-client.sh.j2
+        dest: /opt/consul/start-consul-client.sh
+        owner: consul
+        mode: '0777'

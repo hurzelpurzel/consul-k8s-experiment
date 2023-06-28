@@ -1,0 +1,8 @@
+[Unit]
+Description=IoT iaas consul agent Wants=network-online.target
+After=network-online.target [Service]
+Type=forking
+PIDFile=/run/consul/consul.pid
+Restart=on-failure
+ExecStartPre=-/bin/rm -f /run/consul/consul.pidExecStart=/etc/consul/start-consul-client.sh  [Install]
+WantedBy=multi-user.target

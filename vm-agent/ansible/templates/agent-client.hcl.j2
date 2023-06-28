@@ -1,0 +1,13 @@
+## agent-client.hcl
+
+node_name  = "consul-client"
+server     = false
+datacenter = "dc1"
+log_level  = "INFO"
+retry_join = ["192.168.39.156"]
+
+# Ports
+ports {
+  grpc  = 30502
+  https  = 30500
+}
