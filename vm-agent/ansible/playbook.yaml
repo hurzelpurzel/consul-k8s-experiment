@@ -1,13 +1,24 @@
 - name: Install  Consul
   hosts: debian12
   become: true
-  become_user: ludger
+  become_user: root
   tasks:
    - name: Ping my hosts
      ansible.builtin.ping:
    - name: Print message
      ansible.builtin.debug:
        msg: Hello world
+   - name: Add repo hashicorp
+     block:
+      - name: Hashicorp  key
+        ansible.builtin.get_url:
+          url: https://apt.releases.hashicorp.com/gpg
+          dest: /etc/apt/trusted.gpg.d/hashicorp-archive-keyring.asc
+      - name: Hashicorp repositories
+        ansible.builtin.apt_repository:
+          repo: "deb [signed-by=/etc/apt/trusted.gpg.d/hashicorp-archive-keyring.asc] https://apt.releases.hashicorp.com  {{ ansible_distribution_release }} main"
+          state: present
+          update_cache: true
    - name: Update repositories cache and install "consul" package
      apt:
        name: consul
